@@ -1,0 +1,39 @@
+name: Branch source check
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: branch-source-check-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  branch-source-check:
+    name: branch-source-check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate PR source branch for main
+        env:
+          BASE_REF: ${{ github.base_ref }}
+          HEAD_REF: ${{ github.head_ref }}
+        run: |
+          set -euo pipefail
+          echo "Base: ${BASE_REF}"
+          echo "Head: ${HEAD_REF}"
+          if [ "${BASE_REF}" != "main" ]; then
+            echo "Base is not main — check skipped."
+            exit 0
+          fi
+          case "${HEAD_REF}" in
+            develop|hotfix/*)
+              echo "Head branch '${HEAD_REF}' is allowed to target main."
+              exit 0
+              ;;
+            *)
+              echo "::error::PRs targeting main must come from 'develop' or 'hotfix/*' (got '${HEAD_REF}')."
+              exit 1
+              ;;
+          esac

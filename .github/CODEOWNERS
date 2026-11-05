@@ -1,0 +1,17 @@
+# Default owners (backend)
+* @BryanLhomme
+# TODO Yanis (backend lead)
+
+# Backend source
+/src/ @BryanLhomme
+# TODO Yanis (backend lead)
+
+# Infrastructure (ops) — logins TBD, no known GitHub handle yet
+# /infra/
+# TODO Yanis (ops)
+# TODO Enzo (owner)
+
+# GitHub configuration (ops) — logins TBD, no known GitHub handle yet
+# /.github/
+# TODO Yanis (ops)
+# TODO Enzo (owner)

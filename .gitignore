@@ -1,0 +1,39 @@
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Keystores and mobile credentials
+*.jks
+*.keystore
+google-services.json
+GoogleService-Info.plist
+
+# Service account / TLS keys
+*.pem
+*.p8
+*.p12
+*service-account*.json
+*-service-account.json
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+dist/
+build/
+.venv/
+venv/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# IDE / OS
+.idea/
+.vscode/
+*.swp
+.DS_Store
